@@ -1,0 +1,13 @@
+@import '~variant.scss';
+
+:local(.container){
+	width: 100%;
+	height: 32px;
+	margin-top: 5px;
+
+    color: $title-color;
+
+    span:last-child {
+        color: #233b8a;
+    }
+}

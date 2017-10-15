@@ -1,0 +1,84 @@
+const navigation = [{
+	title:'中心简介',
+	link:'',
+	children:[{
+		title:'中心概况',
+		link:''
+	},{
+		title:'法律地位',
+		link:''
+	},{
+		title:'授权证书',
+		link:''
+	},{
+		title:'重点设备',
+		link:''
+	},{
+		title:'地理位置',
+		link:''
+	}]
+},{
+	title:'检验范围',
+	link:'',
+	children:[{
+		title:'火灾报警产品',
+		link:''
+	},{
+		title:'火灾防护产品',
+		link:''
+	},{
+		title:'灭火设备产品',
+		link:''
+	},{
+		title:'消防装备产品',
+		link:''
+	},{
+		title:'非3C认证产品',
+		link:''
+	}]
+},{
+	title:'通知公告',
+	link:'',
+	children:[]
+},{
+	title:'行业动态',
+	link:''
+},{
+	title:'全部功能',
+	link:'',
+	children:[{
+		title:'图片新闻',
+		link:'',
+		children:[]
+	},{
+		title:'法律法规',
+		link:''
+	},{
+		title:'技术委员会',
+		link:'',
+		children:[{
+			title:'一分委',
+			link:''
+		},{
+			title:'二分委',
+			link:''
+		},{
+			title:'三分委',
+			link:''
+		},{
+			title:'八份委',
+			link:''
+		},{
+			title:'ISO/TC21/SC6',
+			link:''
+		}]
+	},{
+		title:'文件下载',
+		link:''
+	},{
+		title:'公众留言',
+		link:''
+	}]
+}]
+
+export default navigation

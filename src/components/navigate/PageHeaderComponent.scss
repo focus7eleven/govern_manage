@@ -1,0 +1,30 @@
+$page-header-color:#161E44
+
+:local(.container){
+	width: 100%;
+	height: 270px;
+	// border-top: 5px $page-header-color solid;
+	position: relative;
+	display:flex;
+	flex-direction:column;
+	justify-content: flex-end;
+	background-image: url('publicRes/img/topbg.png');
+
+	&::before{
+		// content: ' ';
+		height: 20px;
+		width: 100%;
+		position: absolute;
+		top: 0;
+		left: 0;
+		background-color: #BABDBE;
+	}
+	:local(.logo){
+		width: 100px;
+		height: 100px;
+		background-color: $page-header-color;
+		position: absolute;
+		top:0px;
+		left: 10px;
+	}
+}

@@ -1,0 +1,33 @@
+:local(.container){
+	display: flex;
+	align-items: center;
+	height: 30px;
+	margin:10px 0;
+	background-color: white;
+
+	:local(.addonBefore){
+		padding:5px;
+		&::after{
+			content: ' |';
+			color:#E4E7E9;
+		}
+	}
+	:local(.inputWrapper){
+		padding:5px;
+		>input {
+			border:none;
+			&:focus{
+				border:none;
+			}
+		}
+	}
+	:local(.addonAfter){
+		height: 30px;
+		width: 30px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		background-color: #BFC3C4;
+	}
+
+}
