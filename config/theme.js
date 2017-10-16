@@ -1,6 +1,6 @@
 module.exports = () => {
   return {
-    'primary-color': '#00878e',
-    'link-color': '#00878e',
+    'primary-color': '#61b2a7',
+    'link-color': '#61b2a7',
   };
 };

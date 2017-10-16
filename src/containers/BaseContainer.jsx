@@ -61,13 +61,9 @@ class BaseContainer extends React.Component {
 					<Menu.Item key="center_facility">重点设备</Menu.Item>
 					<Menu.Item key="center_address">地理位置</Menu.Item>
 				</SubMenu>
-				<SubMenu key="sub2" title={<span><Icon type="appstore" /><span>Navigation Two</span></span>}>
-					<Menu.Item key="5">Option 5</Menu.Item>
+				<SubMenu key="notice" title={<span><Icon type="appstore" /><span>通知公告</span></span>}>
+					<Menu.Item key="notice_add">新增文章</Menu.Item>
 					<Menu.Item key="6">Option 6</Menu.Item>
-					<SubMenu key="sub3" title="Submenu">
-						<Menu.Item key="7">Option 7</Menu.Item>
-						<Menu.Item key="8">Option 8</Menu.Item>
-					</SubMenu>
 				</SubMenu>
 				<SubMenu key="sub4" title={<span><Icon type="setting" /><span>Navigation Three</span></span>}>
 					<Menu.Item key="9">Option 9</Menu.Item>
@@ -87,8 +83,8 @@ class BaseContainer extends React.Component {
 						公安部天津消防研究院管理系统
 					</span>
 					<span className={styles.right}>
-						<Button type="primary" size="large">门户网站</Button>
-						<Button type="primary" size="large">注销</Button>
+						<span>门户网站</span>
+						<span>注销</span>
 					</span>
 				</div>
 				<div className={styles.body}>

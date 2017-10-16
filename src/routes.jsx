@@ -2,7 +2,8 @@ import React from 'react'
 import Bundle from './components/common/Bundle'
 import BaseContainer from './containers/BaseContainer'
 import HomeContainer from 'bundle-loader?lazy!./containers/home/HomeContainer'
-import CenterIntroContainer from 'bundle-loader?lazy!./containers/center_intro/CenterIntroContainer'
+import CenterIntroContainer from 'bundle-loader?lazy!./containers/center/CenterIntroContainer'
+import AddNoticeContainer from 'bundle-loader?lazy!./containers/notice/AddNoticeContainer'
 
 const Loading = () => (<div>Loading...</div>)
 
@@ -22,6 +23,7 @@ const routes = [
             {
                 path: '/',
                 exact: true,
+                name: '首页',
                 component: createComponent(HomeContainer)
             },{
                 path: '/center_intro',
@@ -43,6 +45,10 @@ const routes = [
                 path: '/center_address',
                 name: '中心简介 > 地理位置',
                 component: createComponent(CenterIntroContainer)
+            },{
+                path: '/notice_add',
+                name: '通知公告 > 新增文章',
+                component: createComponent(AddNoticeContainer)
             }
         ]
     }

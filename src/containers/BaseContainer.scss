@@ -17,13 +17,21 @@
 		:local(.left) {
 			line-height: 50px;
 			padding-left: 10px;
+			cursor: pointer;
 		}
 
 		:local(.right) {
-			>button {
+			>span {
 				height: 100%;
-				border-radius: 0px;
-				margin-right: 3px;
+				padding: 5px 10px;
+				color: #61b2a7;
+				line-height: 50px;
+				margin-right: 7px;
+				font-size: 14px;
+				cursor: pointer;
+				&:hover{
+					background-color: rgba(97,178,167,0.2);
+				}
 			}
 		}
 	}
@@ -65,7 +73,7 @@
 				overflow-y: scroll;
 				background-color: white;
 				box-shadow: $box-shadow-heavy;
-				padding: 10px;
+				padding: 20px 0;
 			}
 		}
 	}
