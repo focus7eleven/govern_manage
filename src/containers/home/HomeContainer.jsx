@@ -5,7 +5,11 @@ class HomeContainer extends React.Component {
     render() {
         return (
             <div className={styles.container}>
-                home
+                <div className={styles.welcome}>
+                    欢迎登陆公安部天津消防研究院
+                    <br />
+                    后台管理系统
+                </div>
             </div>
         )
     }
