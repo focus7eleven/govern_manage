@@ -1,6 +1,7 @@
 import React from 'react'
 import styles from './CenterIntroContainer.scss'
 import { Form, Input, Button } from 'antd'
+import Editor from '../../components/common/Editor'
 
 const FormItem = Form.Item;
 
@@ -21,7 +22,7 @@ class CenterIntroContainer extends React.Component {
                         label="概况内容"
                         {...formItemLayout}
                     >
-                        <Input placeholder="input placeholder" />
+                        <Editor />
                     </FormItem>
 
                     <FormItem {...buttonItemLayout}>

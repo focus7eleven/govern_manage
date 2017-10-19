@@ -1,5 +1,6 @@
 import React from 'react'
 import styles from './AddNoticeContainer.scss'
+import Editor from '../../components/common/Editor'
 import { Form, Input, Button, Select, Checkbox, DatePicker } from 'antd'
 import moment from 'moment'
 
@@ -69,7 +70,7 @@ class AddNoticeContainer extends React.Component {
                         label="内容"
                         {...formItemLayout}
                     >
-                        <Input placeholder="input placeholder" />
+                        <Editor />
                     </FormItem>
                     <FormItem
                         label="新闻图片"
