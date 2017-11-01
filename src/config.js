@@ -15,7 +15,12 @@ const config = _.extend({
 		},
         category: {
             get: `${baseURL}/category/selectAllCategory`
-        }
+        },
+		article: {
+			add: {
+				post: `${baseURL}/article/insertArticle`
+			}
+		}
     }
 })
 

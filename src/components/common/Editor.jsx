@@ -9,7 +9,6 @@ class Editor extends React.Component {
 
     constructor(props) {
         super(props)
-        this.clickHandle = this.clickHandle.bind(this)
     }
 
     componentDidMount() {
@@ -22,15 +21,12 @@ class Editor extends React.Component {
 
         // 使用 onchange 函数监听内容的变化，并实时更新到 state 中
         editor.customConfig.onchange = html => {
-          this.setState({
-            editorContent: html
-          })
+            this.setState({
+                editorContent: html
+            })
+            this.props.setContent(html)
         }
         editor.create()
-    }
-
-    clickHandle() {
-      alert(this.state.editorContent)
     }
 
     render() {
