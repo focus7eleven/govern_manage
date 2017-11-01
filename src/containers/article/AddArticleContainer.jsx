@@ -1,15 +1,24 @@
 import React from 'react'
-import styles from './AddNoticeContainer.scss'
+import styles from './AddArticleContainer.scss'
 import Editor from '../../components/common/Editor'
 import { Form, Input, Button, Select, Checkbox, DatePicker } from 'antd'
 import moment from 'moment'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import { withRouter } from 'react-router-dom'
+import { getCategory } from '../../actions/category'
+
 
 const FormItem = Form.Item;
 const Option = Select.Option;
 
-class AddNoticeContainer extends React.Component {
+class AddArticleContainer extends React.Component {
     state = {
         categories: ['通知公告', '行业动态'],
+    }
+
+    componentWillMount() {
+        this.props.getCategory()
     }
 
     render() {
@@ -21,7 +30,7 @@ class AddNoticeContainer extends React.Component {
             wrapperCol: { span: 14, offset: 3 },
         }
 
-        const { categories } = this.state
+        const { categories } = this.props
 
         return (
             <div className={styles.container}>
@@ -30,15 +39,15 @@ class AddNoticeContainer extends React.Component {
                         label="标题"
                         {...formItemLayout}
                     >
-                        <Input placeholder="input placeholder" />
+                        <Input placeholder="请输入标题" />
                     </FormItem>
                     <FormItem
                         label="所属版块"
                         {...formItemLayout}
                     >
-                        <Select defaultValue="通知公告" >
+                        <Select placeholder="请选择所属版块" dropdownStyle={{zIndex: 1000000}} >
                             {categories.map((c, index) => (
-                                <Option key={c} value={c}>{c}</Option>
+                                <Option key={c.id} value={c.name}>{c.name}</Option>
                             ))}
                         </Select>
                     </FormItem>
@@ -53,7 +62,7 @@ class AddNoticeContainer extends React.Component {
                         label="来源"
                         {...formItemLayout}
                     >
-                        <Input placeholder="input placeholder" />
+                        <Input placeholder="请输入来源" />
                     </FormItem>
                     <FormItem
                         label="发布时间"
@@ -95,4 +104,12 @@ class AddNoticeContainer extends React.Component {
     }
 }
 
-export default AddNoticeContainer
+const mapStateToProps = state => ({
+	categories: state.getIn(['category', 'category']),
+})
+
+const mapDispatchToProps = dispatch => ({
+    getCategory: bindActionCreators(getCategory, dispatch),
+})
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(AddArticleContainer))
