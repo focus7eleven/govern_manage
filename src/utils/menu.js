@@ -41,7 +41,7 @@ export default [{
 },{
     name: '一分委',
     route: 'one',
-    type: 'appstore',
+    type: 'team',
     subMenu: [{
         name: '分委简介', // editor
         route: 'one_desc'
@@ -67,7 +67,7 @@ export default [{
 },{
     name: '二分委',
     route: 'two',
-    type: 'appstore',
+    type: 'team',
     subMenu: [{
         name: '分委简介', // editor
         route: 'two_desc'
@@ -93,7 +93,7 @@ export default [{
 },{
     name: '三分委',
     route: 'three',
-    type: 'appstore',
+    type: 'team',
     subMenu: [{
         name: '分委简介', // editor
         route: 'three_desc'
@@ -119,7 +119,7 @@ export default [{
 },{
     name: '八分委',
     route: 'eight',
-    type: 'appstore',
+    type: 'team',
     subMenu: [{
         name: '分委简介', // editor
         route: 'eight_desc'
@@ -145,7 +145,7 @@ export default [{
 },{
     name: 'ISO/TC21/SC6',
     route: 'iso',
-    type: 'appstore',
+    type: 'team',
     subMenu: [{
         name: '分委简介', // editor
         route: 'iso_desc'
@@ -171,7 +171,7 @@ export default [{
 },{
     name: '文章管理',
     route: 'article',
-    type: 'appstore',
+    type: 'file-text',
     subMenu: [{
         name: '所有文章',
         route: 'article_all'
@@ -182,7 +182,7 @@ export default [{
 },{
     name: '版块管理',
     route: 'category',
-    type: 'appstore',
+    type: 'folder',
     subMenu: [{
         name: '所有版块', // list 名称，简要说明，编辑，删除
         route: 'category_all'

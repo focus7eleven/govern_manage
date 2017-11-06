@@ -8,35 +8,70 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { withRouter } from 'react-router-dom'
 import { getCategory } from '../../actions/category'
-import { addArticle, isArticleSingle } from '../../actions/article'
+import { isArticleSingle, updateArticle } from '../../actions/article'
 import config from '../../config'
-import _ from 'lodash'
 
 const FormItem = Form.Item;
 const Option = Select.Option;
 
-class AddArticleContainer extends React.Component {
+class EditArticleContainer extends React.Component {
     state = {
+        categoryId: 0,
+        imgList: [],
         imgUrl: '',
-        imgName: '',
         attachUrl: '',
-        attachName: ''
+        imgName: '',
+        attachName: '',
+        content: '',
+        isTop: 0,
+        isRed: 0,
     }
+
     constructor(props) {
         super(props)
-        this.handleResetForm = this.handleResetForm.bind(this)
         this.handleSetContent = this.handleSetContent.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
+        this.handleGoBack = this.handleGoBack.bind(this)
+        this.handleImgListChange = this.handleImgListChange.bind(this)
         this.handleIsSingle = this.handleIsSingle.bind(this)
     }
 
     componentWillMount() {
-        this.props.getCategory()
+        if (!this.props.article) {
+            this.context.router.history.push('/index/article_all')
+        } else {
+            const {content, categoryId, isTop, isRed, imgUrl, attachUrl, imgName, attachName} = this.props.article
+            let imgList = []
+            if( imgUrl ) {
+                imgList = [{
+                    uid: 0,
+                    status: 'done',
+                    name: imgName,
+                    url: imgUrl
+                }]
+            }
+        this.setState({content, categoryId, isTop, isRed, imgUrl, attachUrl, imgName, attachName, imgList})
+        }
+    }
+
+    componentDidMount() {
+        const article = this.props.article
+        if (article) {
+            this.props.form.setFieldsValue({
+                title: article.title,
+                categoryId: article.categoryId + '',
+                isTop: article.isTop,
+                isRed: article.isRed,
+                source: article.source,
+                content: article.content
+            })
+        }
     }
 
     handleIsSingle(categoryId) {
         this.props.isArticleSingle(categoryId).then(res => {
-            if(!res) {
+            console.log(this.state.categoryId);
+            if(!res && +categoryId !== +this.state.categoryId) {
                 message.error('该类文章已存在，无法新增')
                 this.props.form.resetFields(['categoryId'])
             }
@@ -49,8 +84,8 @@ class AddArticleContainer extends React.Component {
         this.props.form.validateFields((err, values) => {
             if (!err) {
                 const article = _.extend(values, {imgUrl, attachUrl, imgName, attachName})
-                console.log('Received values of form: ', article);
-                this.props.addArticle(article).then(res => {
+                console.log(article);
+                this.props.updateArticle(this.props.article.articleId, article).then(res => {
                     if (res) {
                         this.context.router.history.push('/index/article_all')
                     }
@@ -63,8 +98,44 @@ class AddArticleContainer extends React.Component {
         this.props.form.setFieldsValue({content})
     }
 
-    handleResetForm() {
-        this.props.form.resetFields()
+    handleGoBack() {
+        this.context.router.history.push('/index/article_all')
+    }
+
+    handleImgListChange(info) {
+        let fileList = info.fileList;
+
+        fileList = fileList.slice(-1);
+
+        fileList = fileList.map((file) => {
+            if (file.response) {
+                file.url = file.response.obj;
+            }
+            return file;
+        });
+
+        fileList = fileList.filter((file) => {
+            if (file.response) {
+                return file.status === 'done';
+            }
+            return true;
+        });
+
+        const img = fileList[0]
+
+        if (!img) {
+            this.setState({imgList: [], imgUrl: '', imgName: ''})
+            return
+        }
+
+        if (img.status === 'done') {
+            message.success(`${img.name} 上传成功`);
+            this.setState({imgUrl: img.url, imgName: img.name})
+        } else if (info.file.status === 'error') {
+            message.error(`${img.name} 上传失败`);
+        }
+
+        this.setState({ imgList: fileList });
     }
 
     render() {
@@ -88,17 +159,12 @@ class AddArticleContainer extends React.Component {
             headers: {
                 authorization: sessionStorage.getItem('accessToken')
             },
-            onChange(info) {
-                if (info.file.status !== 'uploading') {
-                    _this.setState({imgUrl: info.file.response.obj, imgName: info.file.name})
-                }
-                if (info.file.status === 'done') {
-                    message.success(`${info.file.name} 上传成功`);
-                } else if (info.file.status === 'error') {
-                    message.error(`${info.file.name} 上传失败`);
-                }
-            },
+            onChange: this.handleImgListChange,
         };
+
+        const attachFileNames = this.state.attachName ? this.state.attachName.split(',') : []
+        const attachFileUrls = this.state.attachUrl ? this.state.attachUrl.split(',') : []
+        const attachFiles = attachFileNames.map((n, index) => ({uid: index, url: attachFileUrls[index], name: n, status: 'done'}))
 
         const attachProps = {
             name: 'attach',
@@ -108,7 +174,16 @@ class AddArticleContainer extends React.Component {
             },
             onChange(info) {
                 if (info.file.status !== 'uploading') {
-                    const attachUrl = info.fileList.map(f => f.response.obj).join(',')
+                    console.log(info.fileList);
+                    const attachUrl = info.fileList.map(f => {
+                        let url = ''
+                        if (f.response) {
+                            url = f.response.obj
+                        } else {
+                            url = f.url
+                        }
+                        return url
+                    }).join(',')
                     const attachName = info.fileList.map(f => f.name).join(',')
                     _this.setState({attachUrl, attachName})
                 }
@@ -118,6 +193,7 @@ class AddArticleContainer extends React.Component {
                     message.error(`${info.file.name} 上传失败`);
                 }
             },
+            defaultFileList: attachFiles
         };
 
         return (
@@ -152,7 +228,7 @@ class AddArticleContainer extends React.Component {
                         {...formItemLayout}
                     >
                         {getFieldDecorator('isTop')(
-                            <Checkbox></Checkbox>
+                            <Checkbox defaultChecked={this.state.isTop}></Checkbox>
                         )}
                     </FormItem>
                     <FormItem
@@ -160,7 +236,7 @@ class AddArticleContainer extends React.Component {
                         {...formItemLayout}
                     >
                         {getFieldDecorator('isRed')(
-                            <Checkbox></Checkbox>
+                            <Checkbox defaultChecked={this.state.isRed}></Checkbox>
                         )}
                     </FormItem>
                     <FormItem
@@ -199,13 +275,18 @@ class AddArticleContainer extends React.Component {
                         })(
                             <Input style={{display: 'none'}}/>
                         )}
-                        <Editor onContentChange={this.handleSetContent}/>
+                        {
+                            this.state.content ?
+                                <Editor initialContent={this.state.content} onContentChange={this.handleSetContent}/>
+                                :
+                                null
+                        }
                     </FormItem>
                     <FormItem
                         label="新闻图片"
                         {...formItemLayout}
                     >
-                        <Upload {...imageProps}>
+                        <Upload {...imageProps} fileList={this.state.imgList}>
                             <Button>
                                 <Icon type="upload" /> 点击上传
                             </Button>
@@ -224,7 +305,7 @@ class AddArticleContainer extends React.Component {
 
                     <FormItem {...buttonItemLayout}>
                         <Button type="primary" onClick={this.handleSubmit}>提交</Button>
-                        <Button style={{ marginLeft: 8 }} onClick={this.handleResetForm}>重置</Button>
+                        <Button style={{ marginLeft: 8 }} onClick={this.handleGoBack}>返回</Button>
                     </FormItem>
                 </Form>
             </div>
@@ -232,22 +313,23 @@ class AddArticleContainer extends React.Component {
     }
 }
 
-AddArticleContainer.contextTypes = {
+EditArticleContainer.contextTypes = {
 	router: PropTypes.shape({
 		history: PropTypes.object.isRequired,
 	}),
 }
 
-const WrappedAddArticleForm = Form.create()(AddArticleContainer);
+const WrappedEditArticleForm = Form.create()(EditArticleContainer);
 
 const mapStateToProps = state => ({
 	categories: state.getIn(['category', 'category']),
+    article: state.getIn(['article', 'editArticle'])
 })
 
 const mapDispatchToProps = dispatch => ({
     getCategory: bindActionCreators(getCategory, dispatch),
     isArticleSingle: bindActionCreators(isArticleSingle, dispatch),
-    addArticle: bindActionCreators(addArticle, dispatch)
+    updateArticle: bindActionCreators(updateArticle, dispatch)
 })
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(WrappedAddArticleForm))
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(WrappedEditArticleForm))

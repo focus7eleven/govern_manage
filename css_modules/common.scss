@@ -20,3 +20,23 @@ input{
 		border:none!important;
 	}
 }
+
+
+:global(.article-table-title) {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+	padding-right: 10px;
+
+    >span:nth-child(n+2) {
+		>div {
+			transform: scale(.7);
+			cursor: default;
+		}
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+}
