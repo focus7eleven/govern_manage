@@ -30,6 +30,10 @@ const config = _.extend({
 		upload: {
 			image: `${baseURL}/upload/uploadNewsImg`,
 			attach: `${baseURL}/upload/uploadNewsAttach`,
+		},
+		committee: {
+			getById: (id) => `${baseURL}/btc/selectBtcById?id=${id}`,
+			update: `${baseURL}/btc/updateBtc`,
 		}
     }
 })

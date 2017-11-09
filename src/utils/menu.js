@@ -19,7 +19,23 @@ export default [{
         route: 'center_address',
     }]
 },{
-    name: '授权范围', // editor
+    name: '通知公告', // editor
+    route: 'notification',
+    type: 'notification',
+},{
+    name: '图片新闻', // editor
+    route: 'imgNews',
+    type: 'picture',
+},{
+    name: '法律法规', // editor
+    route: 'law',
+    type: 'safety',
+},{
+    name: '行业动态', // editor
+    route: 'trends',
+    type: 'to-top',
+},{
+    name: '检验范围', // editor
     route: 'inspect',
     type: 'appstore',
     subMenu: [{
@@ -39,134 +55,139 @@ export default [{
         route: 'inspect_3c'
     }]
 },{
-    name: '一分委',
-    route: 'one',
+    name: '技术委员会',
+    route: 'committee',
     type: 'team',
     subMenu: [{
-        name: '分委简介', // editor
-        route: 'one_desc'
+        name: '一分委',
+        route: 'one',
+        type: 'team',
+        subMenu: [{
+            name: '分委简介', // editor
+            route: 'one_desc'
+        },{
+            name: '留言专区', // blank
+            route: 'one_message'
+        },{
+            name: '下载专区', // list
+            route: 'one_download'
+        },{
+            name: '联系我们', // editor
+            route: 'one_contact'
+        },{
+            name: '目前管理的标准', // editor
+            route: 'one_currentStandard'
+        },{
+            name: '制修订中的标准', // editor
+            route: 'one_modifyStandard'
+        },{
+            name: '工作动态', // list
+            route: 'one_work'
+        }]
     },{
-        name: '留言专区', // blank
-        route: 'one_message'
+        name: '二分委',
+        route: 'two',
+        type: 'team',
+        subMenu: [{
+            name: '分委简介', // editor
+            route: 'two_desc'
+        },{
+            name: '留言专区', // blank
+            route: 'two_message'
+        },{
+            name: '下载专区', // list
+            route: 'two_download'
+        },{
+            name: '联系我们', // editor
+            route: 'two_contact'
+        },{
+            name: '目前管理的标准', // editor
+            route: 'two_currentStandard'
+        },{
+            name: '制修订中的标准', // editor
+            route: 'two_modifyStandard'
+        },{
+            name: '工作动态', // list
+            route: 'two_work'
+        }]
     },{
-        name: '下载专区', // list
-        route: 'one_download'
+        name: '三分委',
+        route: 'three',
+        type: 'team',
+        subMenu: [{
+            name: '分委简介', // editor
+            route: 'three_desc'
+        },{
+            name: '留言专区', // blank
+            route: 'three_message'
+        },{
+            name: '下载专区', // list
+            route: 'three_download'
+        },{
+            name: '联系我们', // editor
+            route: 'three_contact'
+        },{
+            name: '目前管理的标准', // editor
+            route: 'three_currentStandard'
+        },{
+            name: '制修订中的标准', // editor
+            route: 'three_modifyStandard'
+        },{
+            name: '工作动态', // list
+            route: 'three_work'
+        }]
     },{
-        name: '联系我们', // editor
-        route: 'one_contact'
+        name: '八分委',
+        route: 'eight',
+        type: 'team',
+        subMenu: [{
+            name: '分委简介', // editor
+            route: 'eight_desc'
+        },{
+            name: '留言专区', // blank
+            route: 'eight_message'
+        },{
+            name: '下载专区', // list
+            route: 'eight_download'
+        },{
+            name: '联系我们', // editor
+            route: 'eight_contact'
+        },{
+            name: '目前管理的标准', // editor
+            route: 'eight_currentStandard'
+        },{
+            name: '制修订中的标准', // editor
+            route: 'eight_modifyStandard'
+        },{
+            name: '工作动态', // list
+            route: 'eight_work'
+        }]
     },{
-        name: '目前管理的标准', // editor
-        route: 'one_currentStandard'
-    },{
-        name: '制修订中的标准', // editor
-        route: 'one_modifyStandard'
-    },{
-        name: '工作动态', // list
-        route: 'one_work'
-    }]
-},{
-    name: '二分委',
-    route: 'two',
-    type: 'team',
-    subMenu: [{
-        name: '分委简介', // editor
-        route: 'two_desc'
-    },{
-        name: '留言专区', // blank
-        route: 'two_message'
-    },{
-        name: '下载专区', // list
-        route: 'two_download'
-    },{
-        name: '联系我们', // editor
-        route: 'two_contact'
-    },{
-        name: '目前管理的标准', // editor
-        route: 'two_currentStandard'
-    },{
-        name: '制修订中的标准', // editor
-        route: 'two_modifyStandard'
-    },{
-        name: '工作动态', // list
-        route: 'two_work'
-    }]
-},{
-    name: '三分委',
-    route: 'three',
-    type: 'team',
-    subMenu: [{
-        name: '分委简介', // editor
-        route: 'three_desc'
-    },{
-        name: '留言专区', // blank
-        route: 'three_message'
-    },{
-        name: '下载专区', // list
-        route: 'three_download'
-    },{
-        name: '联系我们', // editor
-        route: 'three_contact'
-    },{
-        name: '目前管理的标准', // editor
-        route: 'three_currentStandard'
-    },{
-        name: '制修订中的标准', // editor
-        route: 'three_modifyStandard'
-    },{
-        name: '工作动态', // list
-        route: 'three_work'
-    }]
-},{
-    name: '八分委',
-    route: 'eight',
-    type: 'team',
-    subMenu: [{
-        name: '分委简介', // editor
-        route: 'eight_desc'
-    },{
-        name: '留言专区', // blank
-        route: 'eight_message'
-    },{
-        name: '下载专区', // list
-        route: 'eight_download'
-    },{
-        name: '联系我们', // editor
-        route: 'eight_contact'
-    },{
-        name: '目前管理的标准', // editor
-        route: 'eight_currentStandard'
-    },{
-        name: '制修订中的标准', // editor
-        route: 'eight_modifyStandard'
-    },{
-        name: '工作动态', // list
-        route: 'eight_work'
-    }]
-},{
-    name: 'ISO/TC21/SC6',
-    route: 'iso',
-    type: 'team',
-    subMenu: [{
-        name: '分委简介', // editor
-        route: 'iso_desc'
-    },{
-        name: '留言专区', // blank
-        route: 'iso_message'
-    },{
-        name: '下载专区', // list
-        route: 'iso_download'
-    },{
-        name: '联系我们', // editor
-        route: 'iso_contact'
-    },{
-        name: '目前管理的标准', // editor
-        route: 'iso_currentStandard'
-    },{
-        name: '制修订中的标准', // editor
-        route: 'iso_modifyStandard'
-    },{
-        name: '工作动态', // list
-        route: 'iso_work'
+        name: 'ISO/TC21/SC6',
+        route: 'iso',
+        type: 'team',
+        subMenu: [{
+            name: '分委简介', // editor
+            route: 'iso_desc'
+        },{
+            name: '留言专区', // blank
+            route: 'iso_message'
+        },{
+            name: '下载专区', // list
+            route: 'iso_download'
+        },{
+            name: '联系我们', // editor
+            route: 'iso_contact'
+        },{
+            name: '目前管理的标准', // editor
+            route: 'iso_currentStandard'
+        },{
+            name: '制修订中的标准', // editor
+            route: 'iso_modifyStandard'
+        },{
+            name: '工作动态', // list
+            route: 'iso_work'
+        }]
     }]
 },{
     name: '文章管理',

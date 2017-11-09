@@ -63,8 +63,23 @@ class BaseContainer extends React.Component {
 			>
 				{
 					menuList.map((m, index) => (
+						(m.name === '通知公告' || m.name === '图片新闻' || m.name === '行业动态' || m.name === '法律法规') ?
+						<Menu.Item key={m.route}><Icon type={m.type} />{m.name}</Menu.Item>
+						:
 						<SubMenu key={m.route} title={<span><Icon type={m.type} /><span>{m.name}</span></span>}>
 							{
+								m.name === '技术委员会' ?
+								m.subMenu.map((sm, index) => (
+									<SubMenu key={sm.route} title={<span>{sm.name}</span>}>
+										{
+											sm.subMenu.map((ssm, index) => (
+												<Menu.Item key={ssm.route}>{ssm.name}</Menu.Item>
+											))
+										}
+
+									</SubMenu>
+								))
+								:
 								m.subMenu.map((sm, index) => (
 									<Menu.Item key={sm.route}>{sm.name}</Menu.Item>
 								))

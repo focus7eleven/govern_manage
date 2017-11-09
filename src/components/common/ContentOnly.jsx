@@ -48,8 +48,6 @@ class ContentOnly extends React.Component {
     handleSubmit(e) {
         e.preventDefault();
         this.props.form.validateFields((err, values) => {
-            console.log(values);
-            console.log(this.state.articleId);
             if (!err) {
                 this.props.updateContent(this.state.articleId, values.content).then(res => {
                     if (res) {
