@@ -15,7 +15,7 @@ class CommitteeContentOnly extends React.Component {
         committeeId: 1,
         type: 'desc',
         typeName: {
-            btcbrief: '分委简介',
+            btcBrief: '分委简介',
             connection: '联系方式',
             cms: '目前管理的标准',
             crs: '制修订中的标准'
@@ -53,13 +53,14 @@ class CommitteeContentOnly extends React.Component {
             if (!err) {
                 const committee = this.props.committeeDetail
                 let formData = new FormData()
+                formData.append('selective', 1)
                 formData.append('id', this.state.committeeId)
-                formData.append('btcname', committee.btcname)
-                formData.append('serialnumber', committee.serialnumber)
-                formData.append('shortname', committee.shortname)
+                formData.append('btcName', committee.btcName)
+                formData.append('serialNumber', committee.serialNumber)
+                formData.append('shortName', committee.shortName)
                 formData.append('cms', committee.cms)
                 formData.append('crs', committee.crs)
-                formData.append('btcbrief', committee.btcbrief)
+                formData.append('btcBrief', committee.btcBrief)
                 formData.append('connection', committee.connection)
                 formData.set(this.state.type, values.content)
                 // if (this.state.type === 'desc') {

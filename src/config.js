@@ -33,7 +33,7 @@ const config = _.extend({
 		},
 		committee: {
 			getById: (id) => `${baseURL}/btc/selectBtcById?id=${id}`,
-			update: `${baseURL}/btc/updateBtc`,
+			update: `${baseURL}/btc/updateByPrimaryKeyWithBLOBs`,
 		}
     }
 })

@@ -96,7 +96,7 @@ const routes = [
             },{
                 path: '/index/one_desc',
                 name: '一分委 > 分委简介',
-                component: createComponent(CommitteeContentOnly, '1,btcbrief')
+                component: createComponent(CommitteeContentOnly, '1,btcBrief')
             },{
                 path: '/index/one_contact',
                 name: '一分委 > 联系我们',
@@ -132,7 +132,7 @@ const routes = [
             },{
                 path: '/index/two_desc',
                 name: '二分委 > 分委简介',
-                component: createComponent(CommitteeContentOnly, '2,btcbrief')
+                component: createComponent(CommitteeContentOnly, '2,btcBrief')
             },{
                 path: '/index/two_contact',
                 name: '二分委 > 联系我们',
@@ -148,7 +148,7 @@ const routes = [
             },{
                 path: '/index/three_desc',
                 name: '三分委 > 分委简介',
-                component: createComponent(CommitteeContentOnly, '3,btcbrief')
+                component: createComponent(CommitteeContentOnly, '3,btcBrief')
             },{
                 path: '/index/three_contact',
                 name: '三分委 > 联系我们',
@@ -164,7 +164,7 @@ const routes = [
             },{
                 path: '/index/eight_desc',
                 name: '八分委 > 分委简介',
-                component: createComponent(CommitteeContentOnly, '4,btcbrief')
+                component: createComponent(CommitteeContentOnly, '4,btcBrief')
             },{
                 path: '/index/eight_contact',
                 name: '八分委 > 联系我们',
@@ -180,7 +180,7 @@ const routes = [
             },{
                 path: '/index/iso_desc',
                 name: 'ISO/TC21/SC6 > 分委简介',
-                component: createComponent(CommitteeContentOnly, '5,btcbrief')
+                component: createComponent(CommitteeContentOnly, '5,Btcbrief')
             },{
                 path: '/index/iso_contact',
                 name: 'ISO/TC21/SC6 > 联系我们',
