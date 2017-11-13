@@ -211,4 +211,8 @@ export default [{
         name: '新增版块', // form
         route: 'category_add'
     }]
+},{
+    name: '公众留言',
+    route: 'message',
+    type: 'message',
 }]

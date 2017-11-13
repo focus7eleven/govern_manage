@@ -11,6 +11,7 @@ import AllCategoryContainer from 'bundle-loader?lazy!./containers/category/AllCa
 import ContentOnly from 'bundle-loader?lazy!./components/common/ContentOnly'
 import CommitteeContentOnly from 'bundle-loader?lazy!./containers/committee/CommitteeContentOnly'
 import ListOnly from 'bundle-loader?lazy!./components/common/ListOnly'
+import MessageContainer from 'bundle-loader?lazy!./containers/message/MessageContainer'
 
 const Loading = () => (<div>Loading...</div>)
 
@@ -205,6 +206,10 @@ const routes = [
                 path: '/index/article_all',
                 name: '文章管理 > 所有文章',
                 component: createComponent(AllArticleContainer)
+            },{
+                path: '/index/message',
+                name: '留言管理 > 所有留言',
+                component: createComponent(MessageContainer)
             },{
                 path: '/index/category_all',
                 name: '版块管理 > 所有版块',

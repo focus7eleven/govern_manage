@@ -63,7 +63,7 @@ class BaseContainer extends React.Component {
 			>
 				{
 					menuList.map((m, index) => (
-						(m.name === '通知公告' || m.name === '图片新闻' || m.name === '行业动态' || m.name === '法律法规') ?
+						(m.name === '通知公告' || m.name === '图片新闻' || m.name === '行业动态' || m.name === '法律法规' || m.name === '公众留言') ?
 						<Menu.Item key={m.route}><Icon type={m.type} />{m.name}</Menu.Item>
 						:
 						<SubMenu key={m.route} title={<span><Icon type={m.type} /><span>{m.name}</span></span>}>

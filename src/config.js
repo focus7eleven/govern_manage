@@ -1,7 +1,7 @@
 import _ from 'lodash'
 
 // export const baseURL = "http://47.93.242.215:8927/manage"
-export const baseURL = "http://47.93.242.215:8927/manage"
+export const baseURL = "http://47.93.242.215:8928/manage"
 
 const isProduction = process.env.NODE_ENV === "production"
 
@@ -34,6 +34,12 @@ const config = _.extend({
 		committee: {
 			getById: (id) => `${baseURL}/btc/selectBtcById?id=${id}`,
 			update: `${baseURL}/btc/updateByPrimaryKeyWithBLOBs`,
+		},
+		message: {
+			getAll: `${baseURL}/leaveMessage/selectAllLeaveMessageByPage`,
+			// getAll: `${baseURL}/leaveMessage/selectAllLeaveMessageByPage?page=0&pageSize=9999`,
+			review: (id, pass) => `${baseURL}/leaveMessage/verifyLeaveMessage?id=${id}&pass=${pass}`,
+			reply: `${baseURL}/leaveMessage/reply`,
 		}
     }
 })
