@@ -200,19 +200,30 @@ export default [{
         name: '新增文章',
         route: 'article_add'
     }]
-},{
-    name: '版块管理',
-    route: 'category',
-    type: 'folder',
-    subMenu: [{
-        name: '所有版块', // list 名称，简要说明，编辑，删除
-        route: 'category_all'
-    },{
-        name: '新增版块', // form
-        route: 'category_add'
-    }]
+// },{
+//     name: '版块管理',
+//     route: 'category',
+//     type: 'folder',
+//     subMenu: [{
+//         name: '所有版块', // list 名称，简要说明，编辑，删除
+//         route: 'category_all'
+//     },{
+//         name: '新增版块', // form
+//         route: 'category_add'
+//     }]
 },{
     name: '公众留言',
     route: 'message',
     type: 'message',
+},{
+    name: '用户管理',
+    route: 'admin',
+    type: 'user',
+    subMenu: [{
+        name: '所有管理员',
+        route: 'admin_all'
+    },{
+        name: '注册管理员',
+        route: 'admin_regist'
+    }]
 }]

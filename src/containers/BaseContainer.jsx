@@ -6,6 +6,7 @@ import { Menu, Icon, Button } from 'antd'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { withRouter } from 'react-router-dom'
+import { logout } from '../actions/common'
 import menuList from 'menu'
 const SubMenu = Menu.SubMenu
 const MenuItemGroup = Menu.ItemGroup
@@ -15,6 +16,7 @@ class BaseContainer extends React.Component {
 		breadthumb: '',
 		selectedItem: [],
 		openedSubMenu: [],
+		allowedMenu: [],
 	}
 
 	constructor(props) {
@@ -24,20 +26,33 @@ class BaseContainer extends React.Component {
 	}
 
 	componentWillMount() {
+		const codeIds = JSON.parse(sessionStorage.getItem('codeIds')).sort((a,b) => a - b)
+		const allowedMenu = codeIds.map(i => menuList[i-1])
 		const pathname = this.props.location.pathname;
 		const breadthumb = this.props.routes.find(r => r.path === pathname).name
+		const isAllowed = ~(JSON.stringify(allowedMenu)).indexOf(breadthumb.split(' > ')[0])
+		if (pathname != '/index' && !isAllowed) {
+			window.location.replace('/#/index')
+			window.location.reload()
+		}
 		const selectedItem = [pathname.split('/')[2]]
 		let openedSubMenu = []
 		if (selectedItem[0]) {
 			openedSubMenu = [selectedItem[0].split('_')[0]]
 		}
-		this.setState({breadthumb, selectedItem, openedSubMenu})
+		this.setState({allowedMenu, breadthumb, selectedItem, openedSubMenu})
 	}
 
 	componentWillReceiveProps(nextProps) {
 		const pathname = nextProps.location.pathname;
 		const breadthumb = nextProps.routes.find(r => r.path === pathname).name
-		this.setState({breadthumb})
+		const isAllowed = ~(JSON.stringify(this.state.allowedMenu)).indexOf(breadthumb.split(' > ')[0])
+		if (pathname != '/index' && !isAllowed) {
+			window.location.replace('/#/index')
+			window.location.reload()
+		} else {
+			this.setState({breadthumb})
+		}
 	}
 
 	handleSelectMenu(e) {
@@ -50,8 +65,16 @@ class BaseContainer extends React.Component {
 		this.context.router.history.push('/')
 	}
 
+	handleLogout = () => {
+		this.props.logout().then(res => {
+			if (res) {
+				this.context.router.history.push('/login')
+			}
+		})
+	}
+
 	renderMenu() {
-		const { selectedItem, openedSubMenu } = this.state
+		const { selectedItem, openedSubMenu, allowedMenu } = this.state
 		return (
 			<Menu
 				onClick={this.handleSelectMenu}
@@ -62,7 +85,7 @@ class BaseContainer extends React.Component {
 				mode="inline"
 			>
 				{
-					menuList.map((m, index) => (
+					allowedMenu.map((m, index) => (
 						(m.name === '通知公告' || m.name === '图片新闻' || m.name === '行业动态' || m.name === '法律法规' || m.name === '公众留言') ?
 						<Menu.Item key={m.route}><Icon type={m.type} />{m.name}</Menu.Item>
 						:
@@ -87,23 +110,6 @@ class BaseContainer extends React.Component {
 						</SubMenu>
 					))
 				}
-				{/* <SubMenu key="center" title={<span><Icon type="home" /><span>中心简介</span></span>}>
-					<Menu.Item key="center_intro">中心概况</Menu.Item>
-					<Menu.Item key="center_law">法律地位</Menu.Item>
-					<Menu.Item key="center_certificate">授权证书</Menu.Item>
-					<Menu.Item key="center_facility">重点设备</Menu.Item>
-					<Menu.Item key="center_address">地理位置</Menu.Item>
-				</SubMenu>
-				<SubMenu key="notice" title={<span><Icon type="appstore" /><span>文章管理</span></span>}>
-					<Menu.Item key="notice_all">所有文章</Menu.Item>
-					<Menu.Item key="notice_add">新增文章</Menu.Item>
-				</SubMenu>
-				<SubMenu key="sub4" title={<span><Icon type="setting" /><span>Navigation Three</span></span>}>
-					<Menu.Item key="9">Option 9</Menu.Item>
-				  	<Menu.Item key="10">Option 10</Menu.Item>
-				  	<Menu.Item key="11">Option 11</Menu.Item>
-				  	<Menu.Item key="12">Option 12</Menu.Item>
-				</SubMenu> */}
 			</Menu>
 		)
 	}
@@ -117,7 +123,7 @@ class BaseContainer extends React.Component {
 					</span>
 					<span className={styles.right}>
 						<span>门户网站</span>
-						<span>注销</span>
+						<span onClick={this.handleLogout}>注销</span>
 					</span>
 				</div>
 				<div className={styles.body}>
@@ -142,10 +148,14 @@ const mapStateToProps = state => ({
 	isLogin: state.getIn(['common', 'isLogin']),
 })
 
+const mapDispatchToProps = dispatch => ({
+    logout: bindActionCreators(logout, dispatch),
+})
+
 BaseContainer.contextTypes = {
 	router: PropTypes.shape({
 		history: PropTypes.object.isRequired,
 	}),
 }
 
-export default withRouter(connect(mapStateToProps)(BaseContainer))
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(BaseContainer))

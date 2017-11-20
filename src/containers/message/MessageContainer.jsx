@@ -22,22 +22,6 @@ class MessageContainer extends React.Component {
 
     componentWillMount() {
         this.props.getMessageList()
-        // this.props.getCategory().then(res => {
-        //     console.log(this.props.category);
-        //     const categoryId = this.props.category.find(i => i.name === this.props.contentName).id;
-        //     this.setState({isLoading: true})
-        //     this.props.getArticleByCategory(categoryId).then(res => this.setState({isLoading: false}))
-        // })
-    }
-
-    handleEditArticle(record) {
-        // this.setState({isLoading: true})
-        // this.props.getArticleDetail(record.key).then(res => {
-        //     this.setState({isLoading: false})
-        //     if (res) {
-        //         this.context.router.history.push('/index/article_edit')
-        //     }
-        // })
     }
 
     handleSwitchModal = (visible, message) => {
@@ -55,15 +39,6 @@ class MessageContainer extends React.Component {
             width: 150,
             dataIndex: 'realName',
             key: 'realName',
-            // render: (text, record) => (
-            //     <div className='article-table-title'>
-            //         <span>{text}</span>
-            //         <span>
-            //             {record.isTop ? <Tag color="green">置顶</Tag> : null}
-            //             {record.isRed ? <Tag color="red">标红</Tag> : null}
-            //         </span>
-            //     </div>
-            // )
         },{
             title: '留言内容',
             dataIndex: 'content',

@@ -14,6 +14,9 @@ const config = _.extend({
 		login: {
 			post: `${baseURL}/admin/login`
 		},
+		logout: {
+			post: `${baseURL}/admin/logout`
+		},
         category: {
             get: `${baseURL}/category/selectAllCategory`
         },
@@ -40,6 +43,14 @@ const config = _.extend({
 			// getAll: `${baseURL}/leaveMessage/selectAllLeaveMessageByPage?page=0&pageSize=9999`,
 			review: (id, pass) => `${baseURL}/leaveMessage/verifyLeaveMessage?id=${id}&pass=${pass}`,
 			reply: `${baseURL}/leaveMessage/reply`,
+		},
+		user: {
+			getPower: (id) => `${baseURL}/adminPower/getAdminPowerListAdminId/${id}`,
+			deletePower: `${baseURL}/adminPower/deleteAdminPower`,
+			addPower: `${baseURL}/adminPower/addAdminPowers`,
+			addAdmin: `${baseURL}/admin/regist`,
+			getAllAdmin: `${baseURL}/admin/selectAllAdmin`,
+			deleteAdmin: (id) => `${baseURL}/admin/deleteAdmin/${id}`,
 		}
     }
 })

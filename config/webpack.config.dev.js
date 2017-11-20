@@ -45,7 +45,7 @@ module.exports = {
         // require.resolve('react-dev-utils/webpackHotDevClient'),
         // We ship a few polyfills by default:
         require.resolve('react-hot-loader/patch'),
-        require.resolve('webpack-dev-server/client') + '?http://0.0.0.0:3000',
+        require.resolve('webpack-dev-server/client') + '?http://0.0.0.0:3001',
         require.resolve('webpack/hot/dev-server'),
         // require.resolve('react-dev-utils/webpackHotDevClient'),
         require.resolve('./polyfills'),

@@ -12,6 +12,8 @@ import ContentOnly from 'bundle-loader?lazy!./components/common/ContentOnly'
 import CommitteeContentOnly from 'bundle-loader?lazy!./containers/committee/CommitteeContentOnly'
 import ListOnly from 'bundle-loader?lazy!./components/common/ListOnly'
 import MessageContainer from 'bundle-loader?lazy!./containers/message/MessageContainer'
+import UserManagement from 'bundle-loader?lazy!./containers/user/UserManagement'
+import AddUserContainer from 'bundle-loader?lazy!./containers/user/AddUserContainer'
 
 const Loading = () => (<div>Loading...</div>)
 
@@ -208,12 +210,20 @@ const routes = [
                 component: createComponent(AllArticleContainer)
             },{
                 path: '/index/message',
-                name: '留言管理 > 所有留言',
+                name: '公众留言 > 所有留言',
                 component: createComponent(MessageContainer)
             },{
                 path: '/index/category_all',
                 name: '版块管理 > 所有版块',
                 component: createComponent(AllCategoryContainer)
+            },{
+                path: '/index/admin_all',
+                name: '用户管理 > 所有管理员',
+                component: createComponent(UserManagement)
+            },{
+                path: '/index/admin_regist',
+                name: '用户管理 > 注册管理员',
+                component: createComponent(AddUserContainer)
             }
         ]
     }
