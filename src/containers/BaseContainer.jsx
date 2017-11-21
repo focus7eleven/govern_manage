@@ -27,7 +27,7 @@ class BaseContainer extends React.Component {
 
 	componentWillMount() {
 		const codeIds = JSON.parse(sessionStorage.getItem('codeIds')).sort((a,b) => a - b)
-		const allowedMenu = codeIds.map(i => menuList[i-1])
+		const allowedMenu = codeIds.map(i => menuList[i-1]).slice(0, 10)
 		const pathname = this.props.location.pathname;
 		const breadthumb = this.props.routes.find(r => r.path === pathname).name
 		const isAllowed = ~(JSON.stringify(allowedMenu)).indexOf(breadthumb.split(' > ')[0])

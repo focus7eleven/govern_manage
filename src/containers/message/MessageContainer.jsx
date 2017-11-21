@@ -72,7 +72,7 @@ class MessageContainer extends React.Component {
             )
         },{
             title: '操作',
-            width: 155,
+            width: 175,
             key: 'action',
             render: (text, record) => (
                 <div>
@@ -85,9 +85,9 @@ class MessageContainer extends React.Component {
                         :
                         (
                             record.pass ===1 ?
-                            <span style={{color: '#61b2a7'}}>已通过</span>
+                            <span style={{marginLeft: 10, color: '#61b2a7'}}>已通过</span>
                             :
-                            <span style={{color: '#f04134'}}>已驳回</span>
+                            <span style={{marginLeft: 10, color: '#f04134'}}>已驳回</span>
                         )
                     }
                 </div>

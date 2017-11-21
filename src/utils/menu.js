@@ -216,7 +216,7 @@ export default [{
     route: 'message',
     type: 'message',
 },{
-    name: '用户管理',
+    name: '后台用户管理',
     route: 'admin',
     type: 'user',
     subMenu: [{

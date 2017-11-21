@@ -71,7 +71,7 @@ class ListOnly extends React.Component {
             )
         },{
             title: '操作',
-            width: 155,
+            width: 175,
             key: 'action',
             render: (text, record) => (
                 <div>

@@ -20,9 +20,9 @@
     "eslint-config-react-app": "^1.0.4",
     "eslint-loader": "1.7.1",
     "eslint-plugin-flowtype": "2.33.0",
-    "eslint-plugin-import": "2.2.0",
-    "eslint-plugin-jsx-a11y": "5.0.3",
-    "eslint-plugin-react": "7.0.1",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-jsx-a11y": "^5.1.1",
+    "eslint-plugin-react": "^7.5.1",
     "extract-text-webpack-plugin": "2.1.0",
     "file-loader": "0.11.1",
     "fs-extra": "3.0.1",
@@ -44,8 +44,8 @@
     "url-loader": "0.5.8",
     "webpack": "2.5.1",
     "webpack-dev-server": "2.4.5",
-    "webpack-manifest-plugin": "1.1.0",
-    "whatwg-fetch": "2.0.3"
+    "react-hot-loader": "3.0.0-beta.7",
+    "webpack-manifest-plugin": "1.1.0"
   },
   "dependencies": {
     "antd": "^2.13.9",
@@ -57,7 +57,6 @@
     "pdfjs-dist": "^1.9.450",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
-    "react-hot-loader": "^3.0.0-beta.7",
     "react-redux": "^5.0.6",
     "react-router-dom": "^4.2.2",
     "redux": "^3.6.0",

@@ -218,11 +218,11 @@ const routes = [
                 component: createComponent(AllCategoryContainer)
             },{
                 path: '/index/admin_all',
-                name: '用户管理 > 所有管理员',
+                name: '后台用户管理 > 所有管理员',
                 component: createComponent(UserManagement)
             },{
                 path: '/index/admin_regist',
-                name: '用户管理 > 注册管理员',
+                name: '后台用户管理 > 注册管理员',
                 component: createComponent(AddUserContainer)
             }
         ]
