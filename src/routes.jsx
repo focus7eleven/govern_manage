@@ -14,6 +14,7 @@ import ListOnly from 'bundle-loader?lazy!./components/common/ListOnly'
 import MessageContainer from 'bundle-loader?lazy!./containers/message/MessageContainer'
 import UserManagement from 'bundle-loader?lazy!./containers/user/UserManagement'
 import AddUserContainer from 'bundle-loader?lazy!./containers/user/AddUserContainer'
+import ReportListContainer from 'bundle-loader?lazy!./containers/report/ReportListContainer'
 
 const Loading = () => (<div>Loading...</div>)
 
@@ -224,6 +225,18 @@ const routes = [
                 path: '/index/admin_regist',
                 name: '后台用户管理 > 注册管理员',
                 component: createComponent(AddUserContainer)
+            },{
+                path: '/index/report_import',
+                name: '检验报告管理 > 数据导入',
+                component: createComponent(ReportListContainer)
+            },{
+                path: '/index/report_upload',
+                name: '检验报告管理 > 图片上传',
+                component: createComponent(ReportListContainer)
+            },{
+                path: '/index/report_list',
+                name: '检验报告管理 > 报告列表',
+                component: createComponent(ReportListContainer)
             }
         ]
     }
