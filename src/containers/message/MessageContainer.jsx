@@ -56,7 +56,7 @@ class MessageContainer extends React.Component {
             )
         },{
             title: '发布时间',
-            width: 150,
+            width: 185,
             dataIndex: 'createTime',
             key: 'createTime',
             render: (text, record) => (
@@ -64,7 +64,7 @@ class MessageContainer extends React.Component {
             )
         },{
             title: '回复时间',
-            width: 150,
+            width: 185,
             dataIndex: 'replyTime',
             key: 'replyTime',
             render: (text, record) => (
@@ -72,7 +72,7 @@ class MessageContainer extends React.Component {
             )
         },{
             title: '操作',
-            width: 175,
+            width: 195,
             key: 'action',
             render: (text, record) => (
                 <div>

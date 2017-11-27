@@ -25,6 +25,7 @@ class EditArticleContainer extends React.Component {
         content: '',
         isTop: 0,
         isRed: 0,
+        isRecommend: 0,
     }
 
     constructor(props) {
@@ -40,7 +41,7 @@ class EditArticleContainer extends React.Component {
         if (!this.props.article) {
             this.context.router.history.push('/index/article_all')
         } else {
-            const {content, categoryId, isTop, isRed, imgUrl, attachUrl, imgName, attachName} = this.props.article
+            const {content, categoryId, isTop, isRed, isRecommend, imgUrl, attachUrl, imgName, attachName} = this.props.article
             let imgList = []
             if( imgUrl ) {
                 imgList = [{
@@ -50,7 +51,7 @@ class EditArticleContainer extends React.Component {
                     url: imgUrl
                 }]
             }
-        this.setState({content, categoryId, isTop, isRed, imgUrl, attachUrl, imgName, attachName, imgList})
+        this.setState({content, categoryId, isTop, isRed, isRecommend, imgUrl, attachUrl, imgName, attachName, imgList})
         }
     }
 
@@ -62,6 +63,7 @@ class EditArticleContainer extends React.Component {
                 categoryId: article.categoryId + '',
                 isTop: article.isTop,
                 isRed: article.isRed,
+                isRecommend: article.isRecommend,
                 source: article.source,
                 content: article.content
             })
@@ -224,21 +226,27 @@ class EditArticleContainer extends React.Component {
                         )}
                     </FormItem>
                     <FormItem
-                        label="是否置顶"
+                        label="选项"
                         {...formItemLayout}
                     >
                         {getFieldDecorator('isTop')(
-                            <Checkbox defaultChecked={this.state.isTop}></Checkbox>
+                            <Checkbox defaultChecked={this.state.isTop}>置顶</Checkbox>
+                        )}
+                        {getFieldDecorator('isRed')(
+                            <Checkbox defaultChecked={this.state.isRed}>标红</Checkbox>
+                        )}
+                        {getFieldDecorator('isRecommend')(
+                            <Checkbox defaultChecked={this.state.isRecommend}>推荐</Checkbox>
                         )}
                     </FormItem>
-                    <FormItem
+                    {/* <FormItem
                         label="是否标红"
                         {...formItemLayout}
                     >
                         {getFieldDecorator('isRed')(
                             <Checkbox defaultChecked={this.state.isRed}></Checkbox>
                         )}
-                    </FormItem>
+                    </FormItem> */}
                     <FormItem
                         label="来源"
                         {...formItemLayout}

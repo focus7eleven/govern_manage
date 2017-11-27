@@ -12,7 +12,7 @@ const article = (state = initialState, action) => {
     let list = []
     switch (action.type) {
         case GET_ARTICLE_LIST[1]:
-            list = action.payload.obj.map(o => ({key: o.articleId, isTop: o.isTop, isRed: o.isRed, title: o.title, publishTime: o.publishTime, source: o.source, categoryId: o.categoryId}))
+            list = action.payload.obj.map(o => ({key: o.articleId, isTop: o.isTop, isRed: o.isRed, isRecommend: o.isRecommend, title: o.title, publishTime: o.publishTime, source: o.source, categoryId: o.categoryId}))
             return state.set('articleList', List(list))
         case GET_ARTICLE_DETAIL[1]:
             return state.set('editArticle', action.payload)

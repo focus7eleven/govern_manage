@@ -56,8 +56,9 @@ class AllArticleContainer extends React.Component {
                 <div className='article-table-title'>
                     <span>{text}</span>
                     <span>
-                        {record.isTop ? <Tag color="green">置顶</Tag> : null}
+                        {record.isRecommend ? <Tag color="blue">推荐</Tag> : null}
                         {record.isRed ? <Tag color="red">标红</Tag> : null}
+                        {record.isTop ? <Tag color="green">置顶</Tag> : null}
                     </span>
                 </div>
             )
@@ -81,7 +82,7 @@ class AllArticleContainer extends React.Component {
             )
         },{
             title: '操作',
-            width: 155,
+            width: 165,
             key: 'action',
             render: (text, record) => (
                 <div>

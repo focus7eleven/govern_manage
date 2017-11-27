@@ -148,21 +148,24 @@ class AddArticleContainer extends React.Component {
                         )}
                     </FormItem>
                     <FormItem
-                        label="是否置顶"
+                        label="选项"
                         {...formItemLayout}
                     >
                         {getFieldDecorator('isTop')(
-                            <Checkbox></Checkbox>
+                            <Checkbox>置顶</Checkbox>
+                        )}
+                        {getFieldDecorator('isRed')(
+                            <Checkbox>标红</Checkbox>
+                        )}
+                        {getFieldDecorator('isRecommend')(
+                            <Checkbox>推荐</Checkbox>
                         )}
                     </FormItem>
-                    <FormItem
+                    {/* <FormItem
                         label="是否标红"
                         {...formItemLayout}
                     >
-                        {getFieldDecorator('isRed')(
-                            <Checkbox></Checkbox>
-                        )}
-                    </FormItem>
+                    </FormItem> */}
                     <FormItem
                         label="来源"
                         {...formItemLayout}
