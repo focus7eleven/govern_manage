@@ -89,7 +89,8 @@ class EditArticleContainer extends React.Component {
                 console.log(article);
                 this.props.updateArticle(this.props.article.articleId, article).then(res => {
                     if (res) {
-                        this.context.router.history.push('/index/article_all')
+                        // this.context.router.history.push('/index/article_all')
+                        this.context.router.history.push(`/index/${this.props.backUrl}`)
                     }
                 })
             }
@@ -101,7 +102,7 @@ class EditArticleContainer extends React.Component {
     }
 
     handleGoBack() {
-        this.context.router.history.push('/index/article_all')
+        this.context.router.history.push(`/index/${this.props.backUrl}`)
     }
 
     handleImgListChange(info) {
@@ -331,7 +332,8 @@ const WrappedEditArticleForm = Form.create()(EditArticleContainer);
 
 const mapStateToProps = state => ({
 	categories: state.getIn(['category', 'category']),
-    article: state.getIn(['article', 'editArticle'])
+    article: state.getIn(['article', 'editArticle']),
+    backUrl: state.getIn(['article', 'backUrl'])
 })
 
 const mapDispatchToProps = dispatch => ({

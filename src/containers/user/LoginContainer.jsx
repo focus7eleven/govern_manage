@@ -35,7 +35,7 @@ class LoginContainer extends React.Component {
 
         return (
             <div className={styles.container}>
-                <div className={styles.title}>公安部天津消防研究院管理系统</div>
+                <div className={styles.title}>公安部天津消防研究所管理系统</div>
                 <Form onSubmit={this.handleSubmit} className={styles.loginForm}>
                     <FormItem>
                         {getFieldDecorator('username', {

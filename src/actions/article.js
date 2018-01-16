@@ -3,6 +3,16 @@ import config from "../config";
 import _ from "lodash";
 import { notification } from 'antd'
 
+export const SET_BACK_URL = 'SET_BACK_URL'
+export function setBackUrl(backUrl) {
+    return dispatch => {
+        return dispatch({
+            type: SET_BACK_URL,
+            payload: backUrl
+        })
+    }
+}
+
 export const GET_ARTICLE_LIST = actionNames('GET_ARTICLE_LIST');
 export function getArticleList() {
     return dispatch => {

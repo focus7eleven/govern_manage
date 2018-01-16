@@ -73,6 +73,10 @@ class BaseContainer extends React.Component {
 		})
 	}
 
+	handleJumpToWeb = () => {
+		window.open('http://120.79.0.217:8929/#/')
+	}
+
 	renderMenu() {
 		const { selectedItem, openedSubMenu, allowedMenu } = this.state
 		return (
@@ -122,7 +126,7 @@ class BaseContainer extends React.Component {
 						公安部天津消防研究院管理系统
 					</span>
 					<span className={styles.right}>
-						<span>门户网站</span>
+						<span onClick={this.handleJumpToWeb}>门户网站</span>
 						<span onClick={this.handleLogout}>注销</span>
 					</span>
 				</div>

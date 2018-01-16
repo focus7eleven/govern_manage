@@ -203,6 +203,7 @@ const routes = [
                 component: createComponent(AddArticleContainer)
             },{
                 path: '/index/article_edit',
+                // path: '/index/article_edit?back=:backUrl',
                 name: '文章管理 > 编辑文章',
                 component: createComponent(EditArticleContainer)
             },{

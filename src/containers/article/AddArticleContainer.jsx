@@ -172,6 +172,7 @@ class AddArticleContainer extends React.Component {
                     >
                         {getFieldDecorator('source', {
                             rules: [{ required: true, message: '请输入文章来源' }],
+                            initialValue: 'admin'
                         })(
                             <Input placeholder="请输入来源" />
                         )}
