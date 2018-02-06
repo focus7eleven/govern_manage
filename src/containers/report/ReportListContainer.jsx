@@ -5,7 +5,7 @@ import { Tag, Button, Table, Popconfirm } from 'antd'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { withRouter } from 'react-router-dom'
-import { getCategory } from '../../actions/category'
+import { getReportList } from '../../actions/report'
 import moment from 'moment'
 
 class ReportListContainer extends React.Component {
@@ -18,6 +18,10 @@ class ReportListContainer extends React.Component {
     }
 
     componentWillMount() {
+        this.setState({ isLoading: true })
+        this.props.getReportList().then(res => {
+            this.setState({ isLoading: false })
+        })
     }
 
     render() {
@@ -53,7 +57,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-    // getArticleByCategory: bindActionCreators(getArticleByCategory, dispatch),
+    getReportList: bindActionCreators(getReportList, dispatch),
 })
 
 ReportListContainer.contextTypes = {

@@ -30,6 +30,9 @@ const config = _.extend({
 			deleteById: (id) => `${baseURL}/article/deleteById/${id}`,
 			isSingle: (id) => `${baseURL}/article/articleIfExist?id=${id}`
 		},
+		report: {
+			getReportList: `${baseURL}/reportFileInfo/selectAllReportFileInfoByPage`
+		},
 		upload: {
 			image: `${baseURL}/upload/uploadNewsImg`,
 			attach: `${baseURL}/upload/uploadNewsAttach`,

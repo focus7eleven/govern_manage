@@ -65,12 +65,12 @@ export default [{
         subMenu: [{
             name: '分委简介', // editor
             route: 'one_desc'
-        },{
-            name: '留言专区', // blank
-            route: 'one_message'
-        },{
-            name: '下载专区', // list
-            route: 'one_download'
+        // },{
+        //     name: '留言专区', // blank
+        //     route: 'one_message'
+        // },{
+        //     name: '下载专区', // list
+        //     route: 'one_download'
         },{
             name: '联系我们', // editor
             route: 'one_contact'
@@ -91,12 +91,12 @@ export default [{
         subMenu: [{
             name: '分委简介', // editor
             route: 'two_desc'
-        },{
-            name: '留言专区', // blank
-            route: 'two_message'
-        },{
-            name: '下载专区', // list
-            route: 'two_download'
+        // },{
+        //     name: '留言专区', // blank
+        //     route: 'two_message'
+        // },{
+        //     name: '下载专区', // list
+        //     route: 'two_download'
         },{
             name: '联系我们', // editor
             route: 'two_contact'
@@ -117,12 +117,12 @@ export default [{
         subMenu: [{
             name: '分委简介', // editor
             route: 'three_desc'
-        },{
-            name: '留言专区', // blank
-            route: 'three_message'
-        },{
-            name: '下载专区', // list
-            route: 'three_download'
+        // },{
+        //     name: '留言专区', // blank
+        //     route: 'three_message'
+        // },{
+        //     name: '下载专区', // list
+        //     route: 'three_download'
         },{
             name: '联系我们', // editor
             route: 'three_contact'
@@ -143,12 +143,12 @@ export default [{
         subMenu: [{
             name: '分委简介', // editor
             route: 'eight_desc'
-        },{
-            name: '留言专区', // blank
-            route: 'eight_message'
-        },{
-            name: '下载专区', // list
-            route: 'eight_download'
+        // },{
+        //     name: '留言专区', // blank
+        //     route: 'eight_message'
+        // },{
+        //     name: '下载专区', // list
+        //     route: 'eight_download'
         },{
             name: '联系我们', // editor
             route: 'eight_contact'
@@ -169,12 +169,12 @@ export default [{
         subMenu: [{
             name: '分委简介', // editor
             route: 'iso_desc'
-        },{
-            name: '留言专区', // blank
-            route: 'iso_message'
-        },{
-            name: '下载专区', // list
-            route: 'iso_download'
+        // },{
+        //     name: '留言专区', // blank
+        //     route: 'iso_message'
+        // },{
+        //     name: '下载专区', // list
+        //     route: 'iso_download'
         },{
             name: '联系我们', // editor
             route: 'iso_contact'
