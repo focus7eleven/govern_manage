@@ -31,7 +31,10 @@ const config = _.extend({
 			isSingle: (id) => `${baseURL}/article/articleIfExist?id=${id}`
 		},
 		report: {
-			getReportList: `${baseURL}/reportFileInfo/selectAllReportFileInfoByPage`
+			getReportList: `${baseURL}/reportFileInfo/selectAllReportFileInfoByPage`,
+			uploadPdf: `${baseURL}/upload/uploadReportFile`,
+			uploadExcel: `${baseURL}/upload/uploadExcel`,
+            uploadExcelUrlToDatabase: `${baseURL}/report/importReportExcel`, // get url from uploadExcel, and the post url to database
 		},
 		upload: {
 			image: `${baseURL}/upload/uploadNewsImg`,

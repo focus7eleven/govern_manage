@@ -27,3 +27,49 @@ export function getReportList() {
         })
     }
 }
+
+export const UPLOAD_PDF = 'UPLOAD_PDF'
+export function uploadPdf(formData) {
+    return dispatch => {
+        return fetch(config.api.report.uploadPdf, {
+            method: 'POST',
+            headers: {
+                'Authorization': sessionStorage.getItem('accessToken')
+            },
+            body: formData
+        }).then(res => res.json()).then(res => {
+            return res
+        })
+    }
+}
+
+export const UPLOAD_EXCEL = 'UPLOAD_EXCEL'
+export function uploadExcel(formData) {
+    return dispatch => {
+        return fetch(config.api.report.uploadExcel, {
+            method: 'POST',
+            headers: {
+                'Authorization': sessionStorage.getItem('accessToken')
+            },
+            body: formData
+        }).then(res => res.json()).then(res => {
+            return res
+        })
+    }
+}
+
+export const UPLOAD_EXCEL_URL = 'UPLOAD_EXCEL_URL'
+export function uploadExcelUrl(formData) {
+    return dispatch => {
+        return fetch(config.api.report.uploadExcelUrlToDatabase, {
+            method: 'POST',
+            headers: {
+                'Authorization': sessionStorage.getItem('accessToken')
+            },
+            body: formData
+        }).then(res => {
+        // }).then(res => res.json()).then(res => {
+            return res
+        })
+    }
+}

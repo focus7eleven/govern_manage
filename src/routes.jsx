@@ -15,6 +15,7 @@ import MessageContainer from 'bundle-loader?lazy!./containers/message/MessageCon
 import UserManagement from 'bundle-loader?lazy!./containers/user/UserManagement'
 import AddUserContainer from 'bundle-loader?lazy!./containers/user/AddUserContainer'
 import ReportListContainer from 'bundle-loader?lazy!./containers/report/ReportListContainer'
+import UploadReportExcelContainer from 'bundle-loader?lazy!./containers/report/UploadReportExcelContainer'
 
 const Loading = () => (<div>Loading...</div>)
 
@@ -229,7 +230,7 @@ const routes = [
             },{
                 path: '/index/report_import',
                 name: '检验报告管理 > 数据导入',
-                component: createComponent(ReportListContainer)
+                component: createComponent(UploadReportExcelContainer)
             },{
                 path: '/index/report_upload',
                 name: '检验报告管理 > 图片上传',
