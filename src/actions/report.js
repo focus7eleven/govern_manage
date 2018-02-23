@@ -73,3 +73,19 @@ export function uploadExcelUrl(formData) {
         })
     }
 }
+
+export const UPLOAD_INVALID_URL = 'UPLOAD_INVALID_URL'
+export function uploadInvalidUrl(formData) {
+    return dispatch => {
+        return fetch(config.api.report.uploadInvalidUrlToDatabase, {
+            method: 'POST',
+            headers: {
+                'Authorization': sessionStorage.getItem('accessToken')
+            },
+            body: formData
+        }).then(res => {
+        // }).then(res => res.json()).then(res => {
+            return res
+        })
+    }
+}

@@ -35,6 +35,7 @@ const config = _.extend({
 			uploadPdf: `${baseURL}/upload/uploadReportFile`,
 			uploadExcel: `${baseURL}/upload/uploadExcel`,
             uploadExcelUrlToDatabase: `${baseURL}/report/importReportExcel`, // get url from uploadExcel, and the post url to database
+            uploadInvalidUrlToDatabase: `${baseURL}/invalidReportFile/importInvalidReportExcel`, // get url from uploadExcel, and the post url to database
 		},
 		upload: {
 			image: `${baseURL}/upload/uploadNewsImg`,
