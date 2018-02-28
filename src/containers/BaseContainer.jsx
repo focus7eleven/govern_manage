@@ -7,6 +7,7 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { withRouter } from 'react-router-dom'
 import { logout } from '../actions/common'
+import { setNewArticleType } from '../actions/article'
 import menuList from 'menu'
 const SubMenu = Menu.SubMenu
 const MenuItemGroup = Menu.ItemGroup
@@ -57,6 +58,9 @@ class BaseContainer extends React.Component {
 
 	handleSelectMenu(e) {
 		const current = this.props.location.pathname;
+        if (e.key === 'article_add') {
+            this.props.setNewArticleType(-1)
+        }
 		const to = '/index/' + e.key
 		if (current !== to ) this.context.router.history.push(to)
 	}
@@ -76,6 +80,12 @@ class BaseContainer extends React.Component {
 	handleJumpToWeb = () => {
 		window.open('http://120.79.0.217:8929/#/')
 	}
+
+    handleAddNewArticle = (type) => {
+        const categoryId = this.props.category.find(i => i.name === type).id;
+        this.props.setNewArticleType(categoryId)
+        this.context.router.history.push('/index/article_add')
+    }
 
 	renderMenu() {
 		const { selectedItem, openedSubMenu, allowedMenu } = this.state
@@ -137,6 +147,12 @@ class BaseContainer extends React.Component {
 					<div className={styles.content}>
 						<div className={styles.breadthumb}>
 							{this.state.breadthumb}
+                            {
+                                this.props.location.pathname === '/index/notification' ?
+                                <span onClick={this.handleAddNewArticle.bind(this, '通知公告')} style={{cursor: 'pointer', color: '#61b2a7', float: 'right', marginRight: 15}}>新增文章</span>
+                                :
+                                null
+                            }
 						</div>
 						<div className={styles.children}>
 							<Children routes={this.props.routes} />
@@ -150,10 +166,12 @@ class BaseContainer extends React.Component {
 
 const mapStateToProps = state => ({
 	isLogin: state.getIn(['common', 'isLogin']),
+	category: state.getIn(['category', 'category']),
 })
 
 const mapDispatchToProps = dispatch => ({
     logout: bindActionCreators(logout, dispatch),
+    setNewArticleType: bindActionCreators(setNewArticleType, dispatch),
 })
 
 BaseContainer.contextTypes = {

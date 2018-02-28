@@ -1,12 +1,13 @@
 import { Map, List, Record } from 'immutable'
-import { SET_BACK_URL, DELETE_ARTICLE, GET_ARTICLE_LIST, GET_ARTICLE_DETAIL, GET_ARTICLE_BY_CATEGORY } from '../actions/article'
+import { SET_NEW_ARTICLE_TYPE, SET_BACK_URL, DELETE_ARTICLE, GET_ARTICLE_LIST, GET_ARTICLE_DETAIL, GET_ARTICLE_BY_CATEGORY } from '../actions/article'
 import _ from 'lodash'
 
 const initialState = Map({
     articleList: List([]),
     editArticle: null,
     articleByCategory: [],
-    backUrl: ''
+    backUrl: '',
+    newArticleType: -1,
 })
 
 const article = (state = initialState, action) => {
@@ -14,6 +15,8 @@ const article = (state = initialState, action) => {
     switch (action.type) {
         case SET_BACK_URL:
             return state.set('backUrl', action.payload)
+        case SET_NEW_ARTICLE_TYPE:
+            return state.set('newArticleType', action.payload)
         case GET_ARTICLE_LIST[1]:
             list = action.payload.obj.map(o => ({key: o.articleId, isTop: o.isTop, isRed: o.isRed, isRecommend: o.isRecommend, title: o.title, publishTime: o.publishTime, source: o.source, categoryId: o.categoryId}))
             return state.set('articleList', List(list))

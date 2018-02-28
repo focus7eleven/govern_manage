@@ -34,6 +34,15 @@ class AddArticleContainer extends React.Component {
         this.props.getCategory()
     }
 
+    componentDidMount() {
+        const { newArticleType } = this.props
+        if (newArticleType !== -1) {
+            this.props.form.setFieldsValue({
+                categoryId: newArticleType + '',
+            })
+        }
+    }
+
     handleIsSingle(categoryId) {
         this.props.isArticleSingle(categoryId).then(res => {
             if(!res) {
@@ -246,6 +255,7 @@ const WrappedAddArticleForm = Form.create()(AddArticleContainer);
 
 const mapStateToProps = state => ({
 	categories: state.getIn(['category', 'category']),
+	newArticleType: state.getIn(['article', 'newArticleType']),
 })
 
 const mapDispatchToProps = dispatch => ({

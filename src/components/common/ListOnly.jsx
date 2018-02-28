@@ -22,7 +22,6 @@ class ListOnly extends React.Component {
 
     componentWillMount() {
         this.props.getCategory().then(res => {
-            console.log(this.props.category);
             const categoryId = this.props.category.find(i => i.name === this.props.contentName).id;
             this.setState({isLoading: true})
             this.props.getArticleByCategory(categoryId).then(res => this.setState({isLoading: false}))

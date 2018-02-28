@@ -13,6 +13,16 @@ export function setBackUrl(backUrl) {
     }
 }
 
+export const SET_NEW_ARTICLE_TYPE = 'SET_NEW_ARTICLE_TYPE'
+export function setNewArticleType(type) {
+    return dispatch => {
+        return dispatch({
+            type: SET_NEW_ARTICLE_TYPE,
+            payload: type
+        })
+    }
+}
+
 export const GET_ARTICLE_LIST = actionNames('GET_ARTICLE_LIST');
 export function getArticleList() {
     return dispatch => {
