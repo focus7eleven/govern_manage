@@ -218,12 +218,12 @@ export default [{
     subMenu: [{
         name: '数据导入',
         route: 'report_import'
-    },{
-        name: '图片上传',
-        route: 'report_upload'
-    },{
-        name: '报告列表',
-        route: 'report_list'
+    // },{
+    //     name: '图片上传',
+    //     route: 'report_upload'
+    // },{
+    //     name: '报告列表',
+    //     route: 'report_list'
     }]
 },{
     name: '公众留言',

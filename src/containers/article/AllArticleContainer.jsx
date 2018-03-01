@@ -66,17 +66,20 @@ class AllArticleContainer extends React.Component {
             title: '所属版块',
             dataIndex: 'categoryId',
             key: 'categoryId',
+            sorter: (a, b) => a.categoryId - b.categoryId,
             render: (text, record) => (
                 <div>{this.handleCategoryName(text)}</div>
             )
         },{
             title: '来源',
             dataIndex: 'source',
-            key: 'source'
+            key: 'source',
+            sorter: (a, b) => a.source.localeCompare(b.source)
         },{
             title: '发布时间',
             dataIndex: 'publishTime',
             key: 'publishTime',
+            sorter: (a, b) => a.publishTime - b.publishTime,
             render: (text, record) => (
                 <div>{moment(text).format('YYYY-MM-DD HH:mm:ss')}</div>
             )
