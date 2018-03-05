@@ -47,7 +47,7 @@ class EditArticleContainer extends React.Component {
                 imgList = [{
                     uid: 0,
                     status: 'done',
-                    name: imgName,
+                    name: imgName || '未命名',
                     url: imgUrl
                 }]
             }
