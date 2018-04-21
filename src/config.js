@@ -58,6 +58,12 @@ const config = _.extend({
 			addAdmin: `${baseURL}/admin/regist`,
 			getAllAdmin: `${baseURL}/admin/selectAllAdmin`,
 			deleteAdmin: (id) => `${baseURL}/admin/deleteAdmin/${id}`,
+		},
+		btc: {
+			addBtcm: `${baseURL}/btcm/register`,
+			deleteBtcm: (id) => `${baseURL}/btcm/delete?id=${id}`,
+			updateBtcm: `${baseURL}/btcm/updateBtcm`,
+			getAllBtcm: `${baseURL}/btcm/selectAllBtcmByPage?page=0&pageSize=99999`,
 		}
     }
 })

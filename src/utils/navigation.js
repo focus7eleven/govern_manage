@@ -41,7 +41,7 @@ const navigation = [{
 	link:'',
 	children:[]
 },{
-	title:'行业动态',
+	title:'新闻动态',
 	link:''
 },{
 	title:'全部功能',

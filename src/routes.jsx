@@ -12,7 +12,9 @@ import ContentOnly from 'bundle-loader?lazy!./components/common/ContentOnly'
 import CommitteeContentOnly from 'bundle-loader?lazy!./containers/committee/CommitteeContentOnly'
 import ListOnly from 'bundle-loader?lazy!./components/common/ListOnly'
 import MessageContainer from 'bundle-loader?lazy!./containers/message/MessageContainer'
+import BtcmManagement from 'bundle-loader?lazy!./containers/committee/BtcmManagement'
 import UserManagement from 'bundle-loader?lazy!./containers/user/UserManagement'
+import AddBtcmContainer from 'bundle-loader?lazy!./containers/committee/AddBtcmContainer'
 import AddUserContainer from 'bundle-loader?lazy!./containers/user/AddUserContainer'
 import ReportListContainer from 'bundle-loader?lazy!./containers/report/ReportListContainer'
 import UploadReportExcelContainer from 'bundle-loader?lazy!./containers/report/UploadReportExcelContainer'
@@ -52,8 +54,8 @@ const routes = [
                 component: createComponent(ListOnly, '法律法规')
             },{
                 path: '/index/trends',
-                name: '行业动态',
-                component: createComponent(ListOnly, '行业动态')
+                name: '新闻动态',
+                component: createComponent(ListOnly, '新闻动态')
             },{
                 path: '/index/imgNews',
                 name: '图片新闻',
@@ -198,6 +200,14 @@ const routes = [
                 path: '/index/iso_modifyStandard',
                 name: 'ISO/TC21/SC6 > 制修订中的标准',
                 component: createComponent(CommitteeContentOnly, '5,crs')
+            },{
+                path: '/index/btcm_all',
+                name: '技术委员会 > 所有账户',
+                component: createComponent(BtcmManagement)
+            },{
+                path: '/index/btcm_regist',
+                name: '技术委员会 > 添加账户',
+                component: createComponent(AddBtcmContainer)
             },{
                 path: '/index/article_add',
                 name: '文章管理 > 新增文章',

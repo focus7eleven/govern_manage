@@ -31,7 +31,7 @@ export default [{
     route: 'law',
     type: 'safety',
 },{
-    name: '行业动态', // editor
+    name: '新闻动态', // editor
     route: 'trends',
     type: 'to-top',
 },{
@@ -188,6 +188,16 @@ export default [{
             name: '工作动态', // list
             route: 'iso_work'
         }]
+    },{
+        name: '技术委员会账号管理',
+        route: 'btcm',
+        subMenu: [{
+            name: '所有账户',
+            route: 'btcm_all'
+        },{
+            name: '添加账户',
+            route: 'btcm_regist'
+        }]
     }]
 },{
     name: '文章管理',
@@ -212,20 +222,6 @@ export default [{
 //         route: 'category_add'
 //     }]
 },{
-    name: '检验报告管理',
-    route: 'report',
-    type: 'copy',
-    subMenu: [{
-        name: '数据导入',
-        route: 'report_import'
-    // },{
-    //     name: '图片上传',
-    //     route: 'report_upload'
-    // },{
-    //     name: '报告列表',
-    //     route: 'report_list'
-    }]
-},{
     name: '公众留言',
     route: 'message',
     type: 'message',
@@ -239,5 +235,19 @@ export default [{
     },{
         name: '注册管理员',
         route: 'admin_regist'
+    }]
+},{
+    name: '检验报告管理',
+    route: 'report',
+    type: 'copy',
+    subMenu: [{
+        name: '数据导入',
+        route: 'report_import'
+    // },{
+    //     name: '图片上传',
+    //     route: 'report_upload'
+    // },{
+    //     name: '报告列表',
+    //     route: 'report_list'
     }]
 }]

@@ -12,6 +12,13 @@ import menuList from 'menu'
 const SubMenu = Menu.SubMenu
 const MenuItemGroup = Menu.ItemGroup
 
+const CAN_ADD_ARTICLE_URL = [
+	'/index/notification',
+	'/index/imgNews',
+	'/index/law',
+	'/index/trends',
+]
+
 class BaseContainer extends React.Component {
 	state = {
 		breadthumb: '',
@@ -28,7 +35,8 @@ class BaseContainer extends React.Component {
 
 	componentWillMount() {
 		const codeIds = JSON.parse(sessionStorage.getItem('codeIds')).sort((a,b) => a - b)
-		const allowedMenu = codeIds.map(i => menuList[i-1]).slice(0, 10)
+		// const allowedMenu = codeIds.map(i => menuList[i-1]).slice(0, 10)
+		const allowedMenu = codeIds.map(i => menuList[i-1])
 		const pathname = this.props.location.pathname;
 		const breadthumb = this.props.routes.find(r => r.path === pathname).name
 		const isAllowed = ~(JSON.stringify(allowedMenu)).indexOf(breadthumb.split(' > ')[0])
@@ -81,7 +89,24 @@ class BaseContainer extends React.Component {
 		window.open('http://120.79.0.217:8929/#/')
 	}
 
-    handleAddNewArticle = (type) => {
+    handleAddNewArticle = (path) => {
+		let type
+		switch (path) {
+			case '/index/notification':
+				type = '通知公告'
+				break;
+			case '/index/imgNews':
+				type = '图片新闻'
+				break;
+			case '/index/law':
+				type = '法律法规'
+				break;
+			case '/index/trends':
+				type = '新闻动态'
+				break;
+			default:
+				type = '新闻动态'
+		}
         const categoryId = this.props.category.find(i => i.name === type).id;
         this.props.setNewArticleType(categoryId)
         this.context.router.history.push('/index/article_add')
@@ -100,21 +125,23 @@ class BaseContainer extends React.Component {
 			>
 				{
 					allowedMenu.map((m, index) => (
-						(m.name === '通知公告' || m.name === '图片新闻' || m.name === '行业动态' || m.name === '法律法规' || m.name === '公众留言') ?
+						(m.name === '通知公告' || m.name === '图片新闻' || m.name === '新闻动态' || m.name === '法律法规' || m.name === '公众留言') ?
 						<Menu.Item key={m.route}><Icon type={m.type} />{m.name}</Menu.Item>
 						:
 						<SubMenu key={m.route} title={<span><Icon type={m.type} /><span>{m.name}</span></span>}>
 							{
 								m.name === '技术委员会' ?
 								m.subMenu.map((sm, index) => (
+									sm.subMenu ?
 									<SubMenu key={sm.route} title={<span>{sm.name}</span>}>
 										{
 											sm.subMenu.map((ssm, index) => (
 												<Menu.Item key={ssm.route}>{ssm.name}</Menu.Item>
 											))
 										}
-
 									</SubMenu>
+									:
+									<Menu.Item key={sm.route}>{sm.name}</Menu.Item>
 								))
 								:
 								m.subMenu.map((sm, index) => (
@@ -148,8 +175,8 @@ class BaseContainer extends React.Component {
 						<div className={styles.breadthumb}>
 							{this.state.breadthumb}
                             {
-                                this.props.location.pathname === '/index/notification' ?
-                                <span onClick={this.handleAddNewArticle.bind(this, '通知公告')} style={{cursor: 'pointer', color: '#61b2a7', float: 'right', marginRight: 15}}>新增文章</span>
+                                ~(CAN_ADD_ARTICLE_URL.indexOf(this.props.location.pathname)) ?
+                                <span onClick={this.handleAddNewArticle.bind(this, this.props.location.pathname)} style={{cursor: 'pointer', color: '#61b2a7', float: 'right', marginRight: 15}}>新增文章</span>
                                 :
                                 null
                             }
