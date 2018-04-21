@@ -15,7 +15,7 @@ export const login = (user,password) => {
         }).then(res => res.json()).then(res => {
             if (res.status === 1) {
                 sessionStorage.setItem('accessToken', res.obj.accessToken)
-                sessionStorage.setItem('codeIds', JSON.stringify(res.obj.codeIds))
+                sessionStorage.setItem('codeIds', JSON.stringify(res.obj.powerCodes.map(v => v.name)))
                 dispatch({
                     type:LOGIN_SUCCESS,
                     isLogin: true,

@@ -22,18 +22,37 @@ export default [{
     name: '通知公告', // editor
     route: 'notification',
     type: 'notification',
+    canAddArticle: true,
 },{
     name: '图片新闻', // editor
     route: 'imgNews',
     type: 'picture',
+    canAddArticle: true,
 },{
     name: '法律法规', // editor
     route: 'law',
     type: 'safety',
+    canAddArticle: true,
 },{
     name: '新闻动态', // editor
     route: 'trends',
     type: 'to-top',
+    canAddArticle: true,
+},{
+    name: '认证专栏', // editor
+    route: 'certificate',
+    type: 'idcard',
+    canAddArticle: true,
+},{
+    name: '合同预签', // editor
+    route: 'contract_presign',
+    type: 'file-ppt',
+    canAddArticle: true,
+},{
+    name: '社会责任报告', // editor
+    route: 'social_report',
+    type: 'global',
+    canAddArticle: true,
 },{
     name: '检验范围', // editor
     route: 'inspect',
