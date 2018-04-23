@@ -87,3 +87,34 @@ export const replyMessage = (id, reply) => {
         })
     }
 }
+
+export const DELETE_MESSAGE_SUCCESS = 'DELETE_MESSAGE_SUCCESS'
+export const deleteMessage = (id) => {
+    return dispatch => {
+        let formData = new FormData()
+        formData.append('id', id)
+        return fetch(config.api.message.deleteMessage, {
+            method:'POST',
+            headers: {
+                'Authorization': sessionStorage.getItem('accessToken')
+            },
+            body: formData
+        }).then(res => res.json()).then(res => {
+            if (res.status === 1) {
+                dispatch({
+                    type: DELETE_MESSAGE_SUCCESS,
+                    payload: {
+                        messageId: id,
+                    }
+                })
+                return true
+            } else {
+                notification.error({
+                    message: '失败',
+                    description: res.errorMes
+                })
+                return false
+            }
+        })
+    }
+}

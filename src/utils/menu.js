@@ -14,6 +14,7 @@ export default [{
     },{
         name: '重点设备',
         route: 'center_facility',
+        canAddArticle: true,
     },{
         name: '地理位置',
         route: 'center_address',
@@ -59,18 +60,23 @@ export default [{
     type: 'appstore',
     subMenu: [{
         name: '火灾报警产品',
-        route: 'inspect_119'
+        route: 'inspect_119',
+        canAddArticle: true,
     },{
         name: '火灾防护产品',
-        route: 'inspect_protect'
+        route: 'inspect_protect',
+        canAddArticle: true,
     },{
         name: '灭火设备产品',
-        route: 'inspect_outfire'
+        route: 'inspect_outfire',
+        canAddArticle: true,
     },{
         name: '消防装备产品',
+        canAddArticle: true,
         route: 'inspect_equipment'
     },{
         name: '非3C认证产品',
+        canAddArticle: true,
         route: 'inspect_3c'
     }]
 },{

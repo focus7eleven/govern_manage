@@ -12,9 +12,20 @@ import menuList from 'menu'
 const SubMenu = Menu.SubMenu
 const MenuItemGroup = Menu.ItemGroup
 
-const CAN_ADD_ARTICLE_URL = menuList.map(m => {
+let CAN_ADD_ARTICLE_URL = menuList.map(m => {
 	if (m.canAddArticle) {
+		// return '/index/' + m.route
 		return '/index/' + m.route
+	}
+})
+
+menuList.forEach(m => {
+	if (m.subMenu) {
+		m.subMenu.forEach(sm => {
+			if (sm.canAddArticle) {
+				CAN_ADD_ARTICLE_URL.push(`/index/${sm.route}`)
+			}
+		})
 	}
 })
 
@@ -94,7 +105,19 @@ class BaseContainer extends React.Component {
 	}
 
     handleAddNewArticle = (path) => {
-		let type = NO_SUBMENU_CATEGORY[CAN_ADD_ARTICLE_URL.indexOf(path)]
+		let type = ''
+		menuList.forEach(m => {
+			if (`/index/${m.route}` === path) {
+				type = m.name
+			}
+			if (m.subMenu) {
+				m.subMenu.forEach(sm => {
+					if (`/index/${sm.route}` === path) {
+						type = sm.name
+					}
+				})
+			}
+		})
     	const categoryId = this.props.category.find(i => i.name === type).id;
         this.props.setNewArticleType(categoryId)
         this.context.router.history.push('/index/article_add')

@@ -1,5 +1,5 @@
 import { Map, List } from 'immutable'
-import { GET_MESSAGE_LIST, REVIEW_MESSAGE, REPLY_MESSAGE_SUCCESS } from '../actions/message'
+import { DELETE_MESSAGE_SUCCESS, GET_MESSAGE_LIST, REVIEW_MESSAGE, REPLY_MESSAGE_SUCCESS } from '../actions/message'
 
 const initialState = Map({
     messageList: List([]),
@@ -15,6 +15,9 @@ const message = (state = initialState, action) => {
         case REPLY_MESSAGE_SUCCESS:
             const { messageId, reply } = action.payload
             return state.update('messageList', l => l.update(l.findIndex(v => v.id === messageId), v => {v.reply = reply;return v}))
+        case DELETE_MESSAGE_SUCCESS:
+            const idx = state.get('messageList').findIndex(v => v.id === action.payload.messageId)
+            return state.update('messageList', l => l.delete(idx))
     default:
         return state
     }

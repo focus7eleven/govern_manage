@@ -5,7 +5,7 @@ import { Tag, Button, Table, Popconfirm } from 'antd'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { withRouter } from 'react-router-dom'
-import { getMessageList, reviewMessage } from '../../actions/message'
+import { deleteMessage, getMessageList, reviewMessage } from '../../actions/message'
 import ReplyModal from './ReplyModal'
 import moment from 'moment'
 
@@ -31,6 +31,11 @@ class MessageContainer extends React.Component {
     handleReviewMessage = (record, pass) => {
         this.setState({isLoading: true})
         this.props.reviewMessage(record.id, pass).then(res => this.setState({isLoading: false}))
+    }
+
+    handleDeleteMessage = (record) => {
+        this.setState({isLoading: true})
+        this.props.deleteMessage(record.id).then(res => this.setState({isLoading: false}))
     }
 
     render() {
@@ -72,7 +77,7 @@ class MessageContainer extends React.Component {
             )
         },{
             title: '操作',
-            width: 195,
+            width: 325,
             key: 'action',
             render: (text, record) => (
                 <div>
@@ -80,16 +85,19 @@ class MessageContainer extends React.Component {
                     {
                         record.pass === 0 ?
                         <Popconfirm title="审核留言是否通过" onConfirm={this.handleReviewMessage.bind(this, record, 1)} onCancel={this.handleReviewMessage.bind(this, record, 2)} okText="通过" cancelText="不通过">
-                            <Button type="danger" >审核</Button>
+                            <Button type="danger" style={{ marginRight: 20 }} >审核</Button>
                         </Popconfirm>
                         :
                         (
                             record.pass ===1 ?
-                            <span style={{marginLeft: 10, color: '#61b2a7'}}>已通过</span>
+                            <span style={{marginLeft: 10, marginRight: 33, color: '#61b2a7'}}>已通过</span>
                             :
-                            <span style={{marginLeft: 10, color: '#f04134'}}>已驳回</span>
+                            <span style={{marginLeft: 10, marginRight: 33, color: '#f04134'}}>已驳回</span>
                         )
                     }
+                    <Popconfirm title="是否确认删除" onConfirm={this.handleDeleteMessage.bind(this, record)}  okText="确认" cancelText="取消">
+                        <Button type="danger" >删除</Button>
+                    </Popconfirm>
                 </div>
             ),
         }];
@@ -114,6 +122,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
     getMessageList: bindActionCreators(getMessageList, dispatch),
     reviewMessage: bindActionCreators(reviewMessage, dispatch),
+    deleteMessage: bindActionCreators(deleteMessage, dispatch),
 })
 
 MessageContainer.contextTypes = {

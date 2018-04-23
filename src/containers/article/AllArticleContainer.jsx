@@ -5,7 +5,7 @@ import { Tag, Button, Table, Popconfirm } from 'antd'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { withRouter } from 'react-router-dom'
-import { getArticleDetail, getArticleList, deleteArticle } from '../../actions/article'
+import { setBackUrl, getArticleDetail, getArticleList, deleteArticle } from '../../actions/article'
 import { getCategory } from '../../actions/category'
 import moment from 'moment'
 
@@ -28,10 +28,12 @@ class AllArticleContainer extends React.Component {
     }
 
     handleEditArticle(record) {
+        const backUrl = this.props.match.path.split('/')[2]
         this.setState({isLoading: true})
         this.props.getArticleDetail(record.key).then(res => {
             this.setState({isLoading: false})
             if (res) {
+                this.props.setBackUrl(backUrl)
                 this.context.router.history.push('/index/article_edit')
             }
         })
@@ -113,6 +115,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
+    setBackUrl: bindActionCreators(setBackUrl, dispatch),
     getArticleList: bindActionCreators(getArticleList, dispatch),
     getArticleDetail: bindActionCreators(getArticleDetail, dispatch),
     getCategory: bindActionCreators(getCategory, dispatch),

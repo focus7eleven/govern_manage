@@ -50,6 +50,7 @@ const config = _.extend({
 			// getAll: `${baseURL}/leaveMessage/selectAllLeaveMessageByPage?page=0&pageSize=9999`,
 			review: (id, pass) => `${baseURL}/leaveMessage/verifyLeaveMessage?id=${id}&pass=${pass}`,
 			reply: `${baseURL}/leaveMessage/reply`,
+			deleteMessage: `${baseURL}/leaveMessage/deleteLeaveMessageById`
 		},
 		user: {
 			getPower: (id) => `${baseURL}/adminPower/getAdminPowerListAdminId/${id}`,
