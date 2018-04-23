@@ -55,6 +55,11 @@ export default [{
     type: 'global',
     canAddArticle: true,
 },{
+    name: '文件下载', // editor
+    route: 'file_download',
+    type: 'file-ppt',
+    canAddArticle: true,
+},{
     name: '检验范围', // editor
     route: 'inspect',
     type: 'appstore',

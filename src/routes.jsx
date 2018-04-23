@@ -63,18 +63,23 @@ const routes = [
             },{
                 path: '/index/certificate',
                 name: '认证专栏',
-                component: createComponent(ListOnly, '图片新闻')
-                // component: createComponent(ListOnly, '认证专栏')
+                // component: createComponent(ListOnly, '图片新闻')
+                component: createComponent(ListOnly, '认证专栏')
             },{
                 path: '/index/contract_presign',
                 name: '合同预签',
-                component: createComponent(ListOnly, '图片新闻')
-                // component: createComponent(ListOnly, '合同预签')
+                // component: createComponent(ListOnly, '图片新闻')
+                component: createComponent(ListOnly, '合同预签')
             },{
                 path: '/index/social_report',
                 name: '社会责任报告',
-                component: createComponent(ListOnly, '图片新闻')
-                // component: createComponent(ListOnly, '社会责任报告')
+                // component: createComponent(ListOnly, '图片新闻')
+                component: createComponent(ListOnly, '社会责任报告')
+            },{
+                path: '/index/file_download',
+                name: '文件下载',
+                // component: createComponent(ListOnly, '图片新闻')
+                component: createComponent(ListOnly, '文件下载')
             },{
                 path: '/index/center_intro',
                 name: '中心简介 > 中心概况',
